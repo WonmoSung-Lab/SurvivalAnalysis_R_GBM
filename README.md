@@ -23,26 +23,8 @@ If this code is useful for your work, please consider to cite our paper:
 
 ## Description
 
-* webapp
-* randomsurvivalforest
+1) ./randomsurvivalforest_backward_feature_selection/
 
-1 .To train `CGS` for porous network problems (Section 6.1)
-
-```console
-python pn_train.py
-```
-
-2. To train `CGS` for graph value iteration problems (Section 6.2)
-
-```console
-python gvi_train.py
-```
-
-3. To train `CGS` for graph benchmark problems (Section 6.3)
-
-```console
-python benchmark_train.py
-```
-
+2) ./webapp/
 
 
