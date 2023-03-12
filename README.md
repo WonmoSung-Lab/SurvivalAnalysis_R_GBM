@@ -1,4 +1,4 @@
-# Survival analysis: Prognosis prediction for patients with glioblastoma
+# Prognosis prediction for patients with glioblastoma
 
 The official code repository of the survival analysis project.
 
