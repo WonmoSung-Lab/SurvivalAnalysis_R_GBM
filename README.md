@@ -29,4 +29,4 @@ If this code is useful for your work, please consider to cite our paper:
 
 
 ## Authors
-  - [Always0ne](https://github.com/YeseulKima) - **Yeseul Kim** - <yeseulkim@catholic.ac.kr>
+  - [YeseulKima](https://github.com/YeseulKima) - **Yeseul Kim** - <yeseulkim@catholic.ac.kr>
