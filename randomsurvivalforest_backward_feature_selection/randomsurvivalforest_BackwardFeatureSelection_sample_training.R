@@ -1,4 +1,4 @@
-# 0. Import packages
+# Import packages
 library(randomForestSRC) # : random forest package
 library(caret) # : to stratified k-fold sets
 library(survival) # : to make survival object
@@ -9,22 +9,22 @@ library(pROC)# : to calculate Cindex
 library(tidyverse) # : to edit dataframe. 
 library(bigmemory) # : for deepcopy. 
 
-# 2. Import customized modules
+# Import customized modules
 source("./utils/RF_performance_metrix.R")
 source("./utils/rsf_hyperparameter_tuning.R")
 
-# 1. Load train & test set #######
+# Load train & test set #######
 Xy_df = read.csv('dummy_pt_data.csv')
 #######
 
-# 2. Settings #######
+# Settings #######
 RandomSeeds = c(10, 42, 50, 100, 250, 567, 750, 1000, 1234, 2022,
                  5678, 8765, 123456, 234567, 345678, 456789, 567890, 678901, 789012, 890123)
 outer_K = 5
 inner_K = 4
 #######
 
-# 3. Tuning. #######
+# Tuning. #######
 # Empty space to save the results. #####
 randomseeds = list()
 out_Ks = list()
@@ -39,7 +39,7 @@ drop_feats_in_order = list()
 for (numFeat_i in 1:5){ 
   print(colnames(Xy_df)) 
   for (random_i in 1:length(RandomSeeds)){
-    # fix random seed.
+    # Fix random seed.
     set.seed(RandomSeeds[[random_i]])
     
     # split train & test set. 
@@ -48,12 +48,12 @@ for (numFeat_i in 1:5){
       train_df = Xy_df[-outer_strtf_5folds[[out_K_i]], ]
       test_df = Xy_df[outer_strtf_5folds[[out_K_i]], ]
       
-      # hyperparameter tuning. (inner_K = 4)
+      # Do hyperparameter tuning. (inner_K = 4)
       mtry_n = sqrt(ncol(Xy_df)-2) + 2
       params_grid0 = makeParamSet(makeDiscreteParam("mtry", values=seq(1:mtry_n)),makeDiscreteParam("ntree", values = c(50, 100, 150, 200, 250)))#:sqrt(ncol(Xy_df))+1)),makeDiscreteParam("ntree", values = c(50, 100, 150, 200, 250))) #,2)),makeDiscreteParam("ntree", values = c(10))) #
       best_params = get_HPO(train_df0 = train_df, target_vector = c('time', 'event'), cv = inner_K, params_grid = params_grid0, measures_list = list(mlr::cindex, ys_ibrier))
       
-      # train a rsf. 
+      # Train a rsf. 
       rsf_i = rfsrc(formula = Surv(time, event)~., data = train_df,
                     mtry = best_params$mtry, 
                     ntree = best_params$ntree,
@@ -77,7 +77,7 @@ for (numFeat_i in 1:5){
       tunned_mtrys = append(tunned_mtrys, best_params$mtry)
       numFeats = append(numFeats, ncol(Xy_df)-2)
       
-      # 6. accumulate VIMP(Permutation importance) values #####
+      # Accumulate VIMP(Permutation importance) values #####
       gg_dta = gg_vimp(rsf_i)
       vimp_vars = gg_dta$vars # get feature names
       vimp_value = gg_dta$vimp # get vimp values
@@ -92,7 +92,7 @@ for (numFeat_i in 1:5){
       #######
       
     }}
-  # Drop the lowest important feature - by: Permutation importance.
+  # Drop the lowest important feature - permutation importance.
   vimp_results_df$mean_ranking = rowMeans(vimp_results_df[, 2:ncol(vimp_results_df)])
   vimp_results_df = vimp_results_df[order(vimp_results_df$mean_ranking),]
   dropFeat = vimp_results_df[nrow(vimp_results_df),1] # the lowest important feature.
