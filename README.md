@@ -30,3 +30,4 @@ If this code is useful for your work, please consider to cite our paper:
 
 ## Authors
   - [YeseulKima](https://github.com/YeseulKima) - **Yeseul Kim** - <yeseulkim@catholic.ac.kr>
+  - [WonmoSung](https://github.com/WonmoSung) - **Wonmo Sung** - <wsung@catholic.ac.kr>
