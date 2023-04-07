@@ -7,12 +7,12 @@ For more details, please see our paper [Prognosis prediction for gioblastoma mul
 If this code is useful for your work, please consider to cite our paper:
 ```
 @inproceedings{
-    kim2023--,
-    title={Prognosis prediction for glioblastoma multiforme patients using machine learning approaches: development of the clinically applicable model},
-    author={Yeseul Kim and --- and Wonmo Sung},
+    kim2023,
+    title={Prognosis prediction for glioblastoma multiforme patients using machine learning approaches: Development of the clinically applicable model},
+    author={Yeseul Kim, Kyung Hwan Kim, Junyoung Park, Hong In Yoon, and Wonmo Sung},
     booktitle={Radiotherapy and Oncology},
     year={2023},
-    url={https://--}
+    url={https://doi.org/10.1016/j.radonc.2023.109617}
 }
 ```
 
