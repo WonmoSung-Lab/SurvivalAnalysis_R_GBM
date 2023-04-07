@@ -3,7 +3,7 @@
 The official code repository of the survival analysis project.
 
 ## Paper
-For more details, please see our paper [Prognosis prediction for gioblastoma multiforme patients](https://www.naver.com) which has been accepted at Radiotherapy and Oncology in 2023 March. 
+For more details, please see our paper [Prognosis prediction for gioblastoma multiforme patients](https://doi.org/10.1016/j.radonc.2023.109617) which has been accepted at Radiotherapy and Oncology in 2023 March. 
 If this code is useful for your work, please consider to cite our paper:
 ```
 @inproceedings{
